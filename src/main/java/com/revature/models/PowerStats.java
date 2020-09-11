@@ -1,14 +1,19 @@
 package com.revature.models;
 
-import javax.persistence.Id;
+import javax.persistence.*;
 
+
+@Entity
+@Table(name="powerstats")
 public class PowerStats {
 	
 	@Id
-	@
-	private int supId;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="powerstats_id")
+	private static final long serialVersionUID = 1L;
+	private int powerstatsId;
 	
-	@Column(name=)
+	
 	private int intelligence;
 	
 	private int strength;

@@ -28,9 +28,6 @@ public class User {
 	@Column(name="user_last_name",nullable=false)
 	private String lastname;
 	
-	@Column(name="user_email",nullable=false, unique=true)
-	private String userEmail;
-	
 	@ManyToOne
 	@Column(name="user_score")
 	private UserScore scoreId;
