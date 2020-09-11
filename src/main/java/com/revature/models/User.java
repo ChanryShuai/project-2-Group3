@@ -65,7 +65,7 @@ public class User {
 		if (userLosses != 0) {
 			this.userRecord = wins/losses * 100;
 		} else {
-			this.userRecord = 0;
+			this.userRecord = 100;
 		}
 	}
 
@@ -88,7 +88,7 @@ public class User {
 		if (userLosses != 0) {
 			this.userRecord = wins/losses * 100;
 		} else {
-			this.userRecord = 0;
+			this.userRecord = 100;
 		}
 	}
 
@@ -219,7 +219,7 @@ public class User {
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", first=" + first
 				+ ", last=" + last + ", userWins=" + userWins + ", userLosses=" + userLosses + ", userRecord="
-				+ userRecord + "]";
+				+ userRecord + "%]";
 	}
 
 }
