@@ -11,7 +11,11 @@ public class Combat {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="combat_id")
 	private int combatId;
+	
+	@Column(name="wins")
 	private int winNum;
+	
+	@Column(name="losses")
 	private int lossNum;
 	
 	

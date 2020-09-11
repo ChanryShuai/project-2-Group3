@@ -21,5 +21,7 @@ public class PowerStats {
 	
 	private int combat;
 	
+	private int statAverage;
+	
 
 }
