@@ -8,19 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="users")
-public class User {
+@Table(name="superheroes")
+public class Superhero {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="users_id")
-	private int userId;
+	@Column(name="sup_id")
+	private int supId;
 	
-	@Column(name="username",nullable=false, unique=true)
-	private String username;
+	@Column(name="superhero_name",nullable=false, unique=true)
+	private String name;
 	
 	@Column(name="password",nullable=false)
-	private String password;
+	private PowerStats powerStats;
 	
 	@Column(name="user_first_name",nullable=false)
 	private String firstname;
@@ -31,10 +31,8 @@ public class User {
 	@Column(name="user_email",nullable=false, unique=true)
 	private String userEmail;
 	
-	@ManyToOne
 	@Column(name="user_score")
-	private UserScore scoreId;
+	private int userScore;
 	
-	
-	
+
 }
