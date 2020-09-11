@@ -1,5 +1,7 @@
 package com.revature.models;
 
+/*Superhero model class: including superhero info, superhero power statics, and super hero good/bad alignment*/
+
 import javax.persistence.*;
 
 @Entity

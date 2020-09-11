@@ -1,9 +1,10 @@
 package com.revature.models;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.*;
+
+/*Battle model class: including all user battles, participants, and the userId associated to each battle*/
 
 @Entity
 @Table(name="battle")

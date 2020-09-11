@@ -2,6 +2,7 @@ package com.revature.models;
 
 import javax.persistence.*;
 
+/*Powerstats model class: including powers of one superhero, and a standard(averaged) power level*/
 
 @Entity
 @Table(name="powerstats")

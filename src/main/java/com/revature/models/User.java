@@ -1,5 +1,7 @@
 package com.revature.models;
 
+/*User model class: including user credentials, user info, and user win/loss records*/
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,52 +9,64 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.revature.utils.PasswordUtil;
+
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="user_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "user_id")
 	private static final long serialVersionUID = 1L;
 	private int userId;
-	
-	@Column(name="username",nullable=false, unique=true)
+
+	@Column(name = "username", nullable = false, unique = true)
 	private String username;
-	
-	@Column(name="password",nullable=false)
+
+	@Column(name = "password", nullable = false)
 	private String password;
-	
-	@Column(name="first_name",nullable=false)
+
+	@Column(name = "first_name", nullable = false)
 	private String first;
-	
-	@Column(name="last_name",nullable=false)
+
+	@Column(name = "last_name", nullable = false)
 	private String last;
-	
-	@Column(name="user_wins")
+
+	@Column(name = "user_wins")
 	private int userWins;
-	
-	@Column(name="user_losses")
+
+	@Column(name = "user_losses")
 	private int userLosses;
-	
-	@Column(name="user_record")
+
+	@Column(name = "user_record")
 	private double userRecord;
 
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public User(String username, String password, String first, String last, int userWins, int userLosses,
 			double userRecord) {
 		super();
 		this.username = username;
-		this.password = password;
+
+		//password encryption
+		String salt = PasswordUtil.getSalt(30);
+		this.password = PasswordUtil.generateSecurePassword(password, salt);
+
 		this.first = first;
 		this.last = last;
 		this.userWins = userWins;
 		this.userLosses = userLosses;
-		this.userRecord = userRecord;
+		
+		double wins = userWins;
+		double losses = userLosses;
+		if (userLosses != 0) {
+			this.userRecord = wins/losses * 100;
+		} else {
+			this.userRecord = 0;
+		}
 	}
 
 	public User(int userId, String username, String password, String first, String last, int userWins, int userLosses,
@@ -60,12 +74,22 @@ public class User {
 		super();
 		this.userId = userId;
 		this.username = username;
-		this.password = password;
+
+		String salt = PasswordUtil.getSalt(30);
+		this.password = PasswordUtil.generateSecurePassword(password, salt);
+
 		this.first = first;
 		this.last = last;
 		this.userWins = userWins;
 		this.userLosses = userLosses;
-		this.userRecord = userRecord;
+		
+		double wins = userWins;
+		double losses = userLosses;
+		if (userLosses != 0) {
+			this.userRecord = wins/losses * 100;
+		} else {
+			this.userRecord = 0;
+		}
 	}
 
 	public int getUserId() {
@@ -132,6 +156,8 @@ public class User {
 		this.userRecord = userRecord;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -195,5 +221,5 @@ public class User {
 				+ ", last=" + last + ", userWins=" + userWins + ", userLosses=" + userLosses + ", userRecord="
 				+ userRecord + "]";
 	}
-	
+
 }
