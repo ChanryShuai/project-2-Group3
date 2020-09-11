@@ -6,14 +6,14 @@ import javax.persistence.Column;
 import javax.persistence.*;
 
 @Entity
-@Table(name="combat")
-public class Combat implements Serializable{
+@Table(name="battle")
+public class Battle implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="combat_id")
+	@Column(name="battle_id")
 	private static final long serialVersionUID = 1L;
-	private int combatId;
+	private int battleId;
 
 	//TALK WITH CHANRY ABOUT IF WE NEED THIS TO HAVE A JOIN
 	@Column(name="outcomes")
@@ -34,16 +34,16 @@ public class Combat implements Serializable{
 	@Column(name="user_id",nullable=false, unique=true)
 	private User userId;
 
-	public Combat(int combatId, int outcomes, Superhero avatarId, Superhero opponentId, User userId) {
+	public Battle(int battleId, int outcomes, Superhero avatarId, Superhero opponentId, User userId) {
 		super();
-		this.combatId = combatId;
+		this.battleId = battleId;
 		this.outcomes = outcomes;
 		this.avatarId = avatarId;
 		this.opponentId = opponentId;
 		this.userId = userId;
 	}
 
-	public Combat(int outcomes, Superhero avatarId, Superhero opponentId, User userId) {
+	public Battle(int outcomes, Superhero avatarId, Superhero opponentId, User userId) {
 		super();
 		this.outcomes = outcomes;
 		this.avatarId = avatarId;
@@ -51,16 +51,16 @@ public class Combat implements Serializable{
 		this.userId = userId;
 	}
 
-	public Combat() {
+	public Battle() {
 		super();
 	}
 
-	public int getCombatId() {
-		return combatId;
+	public int getbattleId() {
+		return battleId;
 	}
 
-	public void setCombatId(int combatId) {
-		this.combatId = combatId;
+	public void setbattleId(int battleId) {
+		this.battleId = battleId;
 	}
 
 	public int getOutcomes() {
@@ -97,7 +97,7 @@ public class Combat implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Combat [combatId=" + combatId + ", outcomes=" + outcomes + ", avatarId=" + avatarId + ", opponentId="
+		return "battle [battleId=" + battleId + ", outcomes=" + outcomes + ", avatarId=" + avatarId + ", opponentId="
 				+ opponentId + ", userId=" + userId + "]";
 	}
 
@@ -106,7 +106,7 @@ public class Combat implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((avatarId == null) ? 0 : avatarId.hashCode());
-		result = prime * result + combatId;
+		result = prime * result + battleId;
 		result = prime * result + ((opponentId == null) ? 0 : opponentId.hashCode());
 		result = prime * result + outcomes;
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
@@ -121,13 +121,13 @@ public class Combat implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Combat other = (Combat) obj;
+		Battle other = (Battle) obj;
 		if (avatarId == null) {
 			if (other.avatarId != null)
 				return false;
 		} else if (!avatarId.equals(other.avatarId))
 			return false;
-		if (combatId != other.combatId)
+		if (battleId != other.battleId)
 			return false;
 		if (opponentId == null) {
 			if (other.opponentId != null)
